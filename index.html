@@ -129,41 +129,17 @@
       gap: 10px;
     }
 
-    /* Language switch (segmented control) */
-    .lang-switch{
-      display: inline-flex;
-      align-items: center;
-      padding: 3px;
+    .lang-toggle {
       border-radius: 999px;
+      padding: 7px 10px;
+      font-size: .8rem;
       border: 1px solid rgba(36, 51, 85, .9);
       background: rgba(17, 27, 47, .75);
-      box-shadow: 0 10px 26px rgba(0,0,0,.25);
-    }
-    .lang-pill{
-      appearance: none;
-      border: 0;
-      background: transparent;
-      color: var(--muted);
-      font-size: .78rem;
-      font-weight: 700;
-      letter-spacing: .04em;
-      padding: 7px 10px;
-      border-radius: 999px;
+      color: var(--text);
       cursor: pointer;
-      line-height: 1;
-      min-width: 44px;
-      transition: background .15s ease, color .15s ease, transform .15s ease;
+      white-space: nowrap;
     }
-    .lang-pill:hover{ color: var(--text); }
-    .lang-pill.active{
-      color: #07101d;
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      box-shadow: 0 8px 18px rgba(48,178,255,.25);
-    }
-    .lang-pill:focus-visible{
-      outline: 2px solid rgba(48,178,255,.75);
-      outline-offset: 2px;
-    }
+    .lang-toggle:hover { border-color: rgba(48,178,255,.55); }
 
     /* Hero */
     .hero {
@@ -497,10 +473,9 @@
       </nav>
 
       <div class="right-tools">
-        <div class="lang-switch" role="group" aria-label="Language switch">
-          <button class="lang-pill" id="langNl" type="button" data-lang="nl" aria-pressed="true">NL</button>
-          <button class="lang-pill" id="langEn" type="button" data-lang="en" aria-pressed="false">EN</button>
-        </div>
+        <button class="lang-toggle" id="langToggle" type="button" aria-label="Toggle language">
+          NL / EN
+        </button>
         <div class="status"><i></i><span data-i18n="available">Beschikbaar voor inhuur</span></div>
       </div>
     </div>
@@ -1050,53 +1025,42 @@
       document.documentElement.lang = lang;
       localStorage.setItem("site_lang", lang);
 
-      // Update plain text nodes + allow simple HTML in some bullets
+      // Update text nodes (allow limited HTML for items containing <strong>)
       document.querySelectorAll("[data-i18n]").forEach((el) => {
         const key = el.getAttribute("data-i18n");
         const val = dict[key];
         if (val === undefined) return;
 
-        // Allow HTML for a small subset (those that contain <strong>)
         if (typeof val === "string" && val.includes("<")) {
           el.innerHTML = val;
         } else {
           el.textContent = val;
-
-      setActivePill(lang);
-    }
+        }
       });
 
       // Update meta description to match language
       const meta = document.querySelector('meta[name="description"]');
       if (meta) {
-        meta.setAttribute("content",
+        meta.setAttribute(
+          "content",
           lang === "en"
             ? "Freelance Network & Security Engineer available for contract. Fortinet (FortiGate/Manager/Analyzer/EMS), Cisco (Nexus/Catalyst) and F5 (LTM). Experience across IT & OT projects, design (HLD/LLD), implementation, operations and troubleshooting."
             : "Freelance Network & Security Engineer beschikbaar voor inhuur. Fortinet (FortiGate/Manager/Analyzer/EMS), Cisco (Nexus/Catalyst) en F5 (LTM). Ervaring in IT & OT projecten, design (HLD/LLD), implementatie, beheer en troubleshooting."
         );
       }
+
+      // Update active language pill
+      setActivePill(lang);
     }
 
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Language toggle (segmented)
-    const btnNl = document.getElementById("langNl");
-    const btnEn = document.getElementById("langEn");
-
-    function setActivePill(lang){
-      if(!btnNl || !btnEn) return;
-      const isNl = lang === "nl";
-      btnNl.classList.toggle("active", isNl);
-      btnEn.classList.toggle("active", !isNl);
-      btnNl.setAttribute("aria-pressed", isNl ? "true" : "false");
-      btnEn.setAttribute("aria-pressed", !isNl ? "true" : "false");
-    }
-
-    [btnNl, btnEn].forEach((b) => {
-      if(!b) return;
-      b.addEventListener("click", () => setLang(b.getAttribute("data-lang")));
+    // Language toggle
+    const btn = document.getElementById("langToggle");
+    btn.addEventListener("click", () => {
+      const current = localStorage.getItem("site_lang") || "nl";
+      setLang(current === "nl" ? "en" : "nl");
     });
-});
 
     // Initialize language from localStorage or browser preference
     const saved = localStorage.getItem("site_lang");
