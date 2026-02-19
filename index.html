@@ -129,17 +129,41 @@
       gap: 10px;
     }
 
-    .lang-toggle {
+    /* Language switch (segmented control) */
+    .lang-switch{
+      display: inline-flex;
+      align-items: center;
+      padding: 3px;
       border-radius: 999px;
-      padding: 7px 10px;
-      font-size: .8rem;
       border: 1px solid rgba(36, 51, 85, .9);
       background: rgba(17, 27, 47, .75);
-      color: var(--text);
-      cursor: pointer;
-      white-space: nowrap;
+      box-shadow: 0 10px 26px rgba(0,0,0,.25);
     }
-    .lang-toggle:hover { border-color: rgba(48,178,255,.55); }
+    .lang-pill{
+      appearance: none;
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      padding: 7px 10px;
+      border-radius: 999px;
+      cursor: pointer;
+      line-height: 1;
+      min-width: 44px;
+      transition: background .15s ease, color .15s ease, transform .15s ease;
+    }
+    .lang-pill:hover{ color: var(--text); }
+    .lang-pill.active{
+      color: #07101d;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      box-shadow: 0 8px 18px rgba(48,178,255,.25);
+    }
+    .lang-pill:focus-visible{
+      outline: 2px solid rgba(48,178,255,.75);
+      outline-offset: 2px;
+    }
 
     /* Hero */
     .hero {
@@ -473,9 +497,10 @@
       </nav>
 
       <div class="right-tools">
-        <button class="lang-toggle" id="langToggle" type="button" aria-label="Toggle language">
-          NL / EN
-        </button>
+        <div class="lang-switch" role="group" aria-label="Language switch">
+          <button class="lang-pill" id="langNl" type="button" data-lang="nl" aria-pressed="true">NL</button>
+          <button class="lang-pill" id="langEn" type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
         <div class="status"><i></i><span data-i18n="available">Beschikbaar voor inhuur</span></div>
       </div>
     </div>
@@ -1036,7 +1061,9 @@
           el.innerHTML = val;
         } else {
           el.textContent = val;
-        }
+
+      setActivePill(lang);
+    }
       });
 
       // Update meta description to match language
@@ -1052,12 +1079,24 @@
 
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Language toggle
-    const btn = document.getElementById("langToggle");
-    btn.addEventListener("click", () => {
-      const current = localStorage.getItem("site_lang") || "nl";
-      setLang(current === "nl" ? "en" : "nl");
+    // Language toggle (segmented)
+    const btnNl = document.getElementById("langNl");
+    const btnEn = document.getElementById("langEn");
+
+    function setActivePill(lang){
+      if(!btnNl || !btnEn) return;
+      const isNl = lang === "nl";
+      btnNl.classList.toggle("active", isNl);
+      btnEn.classList.toggle("active", !isNl);
+      btnNl.setAttribute("aria-pressed", isNl ? "true" : "false");
+      btnEn.setAttribute("aria-pressed", !isNl ? "true" : "false");
+    }
+
+    [btnNl, btnEn].forEach((b) => {
+      if(!b) return;
+      b.addEventListener("click", () => setLang(b.getAttribute("data-lang")));
     });
+});
 
     // Initialize language from localStorage or browser preference
     const saved = localStorage.getItem("site_lang");
