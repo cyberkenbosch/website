@@ -235,6 +235,13 @@
     .hero h1 .sub { display: block; font-size: .62em; color: var(--muted); font-weight: 600; margin-top: 8px; letter-spacing: -.01em; }
     .mini-list li::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--accent-2); margin-right: 9px; vertical-align: middle; }
     .timeline-wide .desc { max-width: 80ch; }
+    .xp-list { margin: 4px 0 0; padding-left: 18px; font-size: .86rem; color: #d7e4ff; display: grid; gap: 3px; }
+    .xp-sub + .xp-list { margin-top: 0; }
+    .xp-list + .xp-sub { margin-top: 12px; }
+    .xp-sub { margin: 8px 0 2px; line-height: 1.3; font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--accent); }
+    .timeline .xp-list li { margin: 0; padding-left: 2px; list-style: disc; }
+    .timeline .xp-list li::before { content: none; }
+    .timeline .xp-list li::marker { color: var(--muted); }
 
     .timeline { margin: 0; padding: 0; list-style: none; border-left: 1px solid rgba(48,178,255,.4); }
     .timeline li { position: relative; margin: 0 0 14px; padding-left: 16px; }
@@ -451,32 +458,72 @@
           <li>
             <div class="role" data-i18n="xp1_role">Network Security Engineer | Ministerie van Defensie</div>
             <div class="meta" data-i18n="xp1_meta">okt 2025 – heden</div>
-            <p class="desc" data-i18n="xp1_desc">Netwerk- en securityengineering in een zwaar beveiligde datacenteromgeving.</p>
+            <ul class="xp-list">
+              <li data-i18n="xp1_b1">Netwerk- en securityengineering</li>
+            </ul>
           </li>
           <li>
             <div class="role">Network Security Engineer | Bunge</div>
             <div class="meta" data-i18n="xp2_meta">jul 2025 – sep 2025</div>
-            <p class="desc" data-i18n="xp2_desc">Voortzetting van de OT-uitrol na de overname van Viterra door Bunge: IT/OT-scheiding en secure remote access. Bijdrage aan standaarden en HLD/LLD.</p>
+            <p class="xp-sub" data-i18n="xp2_ot">OT-security</p>
+            <ul class="xp-list">
+              <li data-i18n="xp2_ot1">Inrichten en configureren van de OT-firewall, gesegmenteerd volgens het Purdue-model, inclusief secure remote access via jumpservers</li>
+              <li data-i18n="xp2_ot2">Scheiden van IT en OT met aparte firewallclusters en een transitnetwerk</li>
+              <li data-i18n="xp2_ot3">Uitrollen van OT-monitoringsensoren, inclusief de initiële netwerkconfiguratie</li>
+              <li data-i18n="xp2_ot4">Vervangen van alle OT-switches in de productieomgeving</li>
+            </ul>
+            <p class="xp-sub" data-i18n="xp2_nw">Netwerk & security</p>
+            <ul class="xp-list">
+              <li data-i18n="xp2_nw1">Ontwikkelen en onderhouden van netwerk- en securitystandaarden en documentatie voor EMEA, APAC en Zuid-Amerika</li>
+              <li data-i18n="xp2_nw2">Opstellen van HLD/LLD</li>
+              <li data-i18n="xp2_nw3">Troubleshooting en oplossen van LAN-, WAN-, VoIP-, wifi-, VPN-, security- en datacenterissues</li>
+              <li data-i18n="xp2_nw4">Netwerkautomatisering met scripts (Python)</li>
+              <li data-i18n="xp2_nw5">Implementeren van processen, policies en best practices voor stabiele, voorspelbare en snelle netwerken</li>
+              <li data-i18n="xp2_nw6">Samenwerken met het informatiebeveiligingsteam aan netwerkbeveiliging en security-incidenten</li>
+              <li data-i18n="xp2_nw7">Borgen van naleving van beleid en procedures</li>
+            </ul>
           </li>
           <li>
             <div class="role">Network Security Engineer | Viterra</div>
             <div class="meta" data-i18n="xp3_meta">apr 2023 – jul 2025</div>
-            <p class="desc" data-i18n="xp3_desc">Implementatie van OT-security voor industriële locaties: OT-firewall met Purdue-segmentatie, gescheiden IT- en OT-firewalls, secure remote access, plaatsing en netwerkconfiguratie van OT-monitoringsensoren en vervanging van OT-switches. Daarnaast internationale standaarden, HLD/LLD en incidentafhandeling.</p>
+            <p class="xp-sub" data-i18n="xp3_ot">OT-security</p>
+            <ul class="xp-list">
+              <li data-i18n="xp3_ot1">Inrichten en configureren van de OT-firewall, gesegmenteerd volgens het Purdue-model, inclusief secure remote access via jumpservers</li>
+              <li data-i18n="xp3_ot2">Scheiden van IT en OT met aparte firewallclusters en een transitnetwerk</li>
+              <li data-i18n="xp3_ot3">Uitrollen van OT-monitoringsensoren, inclusief de initiële netwerkconfiguratie</li>
+              <li data-i18n="xp3_ot4">Vervangen van alle OT-switches in de productieomgeving</li>
+            </ul>
+            <p class="xp-sub" data-i18n="xp3_nw">Netwerk & security</p>
+            <ul class="xp-list">
+              <li data-i18n="xp3_nw1">Ontwikkelen en onderhouden van netwerk- en securitystandaarden en documentatie voor EMEA, APAC en Zuid-Amerika</li>
+              <li data-i18n="xp3_nw2">Opstellen van HLD/LLD</li>
+              <li data-i18n="xp3_nw3">Troubleshooting en oplossen van LAN-, WAN-, VoIP-, wifi-, VPN-, security- en datacenterissues</li>
+              <li data-i18n="xp3_nw4">Netwerkautomatisering met scripts (Python)</li>
+              <li data-i18n="xp3_nw5">Implementeren van processen, policies en best practices voor stabiele, voorspelbare en snelle netwerken</li>
+              <li data-i18n="xp3_nw6">Samenwerken met het informatiebeveiligingsteam aan netwerkbeveiliging en security-incidenten</li>
+              <li data-i18n="xp3_nw7">Borgen van naleving van beleid en procedures</li>
+            </ul>
           </li>
           <li>
             <div class="role">Network & Security Engineer | Alpina Group</div>
             <div class="meta" data-i18n="xp4_meta">jan 2022 – apr 2023</div>
-            <p class="desc" data-i18n="xp4_desc">Netwerk- en securitywerkzaamheden, implementaties en verbeteringen.</p>
+            <ul class="xp-list">
+              <li data-i18n="xp4_b1">Netwerk- en securitywerkzaamheden, implementaties en verbeteringen</li>
+            </ul>
           </li>
           <li>
             <div class="role">Network & Security Engineer | Voogd & Voogd</div>
             <div class="meta" data-i18n="xp5_meta">feb 2017 – dec 2021</div>
-            <p class="desc" data-i18n="xp5_desc">Netwerk- en securityengineering, projecten en troubleshooting.</p>
+            <ul class="xp-list">
+              <li data-i18n="xp5_b1">Netwerk- en securityengineering, projecten en troubleshooting</li>
+            </ul>
           </li>
           <li>
             <div class="role">System Engineer | Voogd & Voogd</div>
             <div class="meta" data-i18n="xp6_meta">okt 2006 – feb 2017</div>
-            <p class="desc" data-i18n="xp6_desc">Brede basis in infrastructuur en systeembeheer, met groei naar netwerk en security.</p>
+            <ul class="xp-list">
+              <li data-i18n="xp6_b1">Brede basis in infrastructuur en systeembeheer, met groei naar netwerk en security</li>
+            </ul>
           </li>
         </ul>
       </article>
@@ -541,15 +588,12 @@
         exp_b5:"<strong>Netwerk:</strong> LAN, WAN, VoIP, Wi-Fi, VPN, datacenter",
         certs_title:"Certificeringen",
         xp_title:"Ervaring",
-        xp1_role:"Network Security Engineer | Ministerie van Defensie", xp1_meta:"okt 2025 – heden",
-        xp1_desc:"Netwerk- en securityengineering in een zwaar beveiligde datacenteromgeving.",
-        xp2_meta:"jul 2025 – sep 2025",
-        xp2_desc:"Voortzetting van de OT-uitrol na de overname van Viterra door Bunge: IT/OT-scheiding en secure remote access. Bijdrage aan standaarden en HLD/LLD.",
-        xp3_meta:"apr 2023 – jul 2025",
-        xp3_desc:"Implementatie van OT-security voor industriële locaties: OT-firewall met Purdue-segmentatie, gescheiden IT- en OT-firewalls, secure remote access, plaatsing en netwerkconfiguratie van OT-monitoringsensoren en vervanging van OT-switches. Daarnaast internationale standaarden, HLD/LLD en incidentafhandeling.",
-        xp4_meta:"jan 2022 – apr 2023", xp4_desc:"Netwerk- en securitywerkzaamheden, implementaties en verbeteringen.",
-        xp5_meta:"feb 2017 – dec 2021", xp5_desc:"Netwerk- en securityengineering, projecten en troubleshooting.",
-        xp6_meta:"okt 2006 – feb 2017", xp6_desc:"Brede basis in infrastructuur en systeembeheer, met groei naar netwerk en security.",
+        xp1_role:"Network Security Engineer | Ministerie van Defensie", xp1_meta:"okt 2025 – heden", xp1_b1:"Netwerk- en securityengineering",
+        xp2_meta:"jul 2025 – sep 2025", xp2_ot:"OT-security", xp2_ot1:"Inrichten en configureren van de OT-firewall, gesegmenteerd volgens het Purdue-model, inclusief secure remote access via jumpservers", xp2_ot2:"Scheiden van IT en OT met aparte firewallclusters en een transitnetwerk", xp2_ot3:"Uitrollen van OT-monitoringsensoren, inclusief de initiële netwerkconfiguratie", xp2_ot4:"Vervangen van alle OT-switches in de productieomgeving", xp2_nw:"Netwerk & security", xp2_nw1:"Ontwikkelen en onderhouden van netwerk- en securitystandaarden en documentatie voor EMEA, APAC en Zuid-Amerika", xp2_nw2:"Opstellen van HLD/LLD", xp2_nw3:"Troubleshooting en oplossen van LAN-, WAN-, VoIP-, wifi-, VPN-, security- en datacenterissues", xp2_nw4:"Netwerkautomatisering met scripts (Python)", xp2_nw5:"Implementeren van processen, policies en best practices voor stabiele, voorspelbare en snelle netwerken", xp2_nw6:"Samenwerken met het informatiebeveiligingsteam aan netwerkbeveiliging en security-incidenten", xp2_nw7:"Borgen van naleving van beleid en procedures",
+        xp3_meta:"apr 2023 – jul 2025", xp3_ot:"OT-security", xp3_ot1:"Inrichten en configureren van de OT-firewall, gesegmenteerd volgens het Purdue-model, inclusief secure remote access via jumpservers", xp3_ot2:"Scheiden van IT en OT met aparte firewallclusters en een transitnetwerk", xp3_ot3:"Uitrollen van OT-monitoringsensoren, inclusief de initiële netwerkconfiguratie", xp3_ot4:"Vervangen van alle OT-switches in de productieomgeving", xp3_nw:"Netwerk & security", xp3_nw1:"Ontwikkelen en onderhouden van netwerk- en securitystandaarden en documentatie voor EMEA, APAC en Zuid-Amerika", xp3_nw2:"Opstellen van HLD/LLD", xp3_nw3:"Troubleshooting en oplossen van LAN-, WAN-, VoIP-, wifi-, VPN-, security- en datacenterissues", xp3_nw4:"Netwerkautomatisering met scripts (Python)", xp3_nw5:"Implementeren van processen, policies en best practices voor stabiele, voorspelbare en snelle netwerken", xp3_nw6:"Samenwerken met het informatiebeveiligingsteam aan netwerkbeveiliging en security-incidenten", xp3_nw7:"Borgen van naleving van beleid en procedures",
+        xp4_meta:"jan 2022 – apr 2023", xp4_b1:"Netwerk- en securitywerkzaamheden, implementaties en verbeteringen",
+        xp5_meta:"feb 2017 – dec 2021", xp5_b1:"Netwerk- en securityengineering, projecten en troubleshooting",
+        xp6_meta:"okt 2006 – feb 2017", xp6_b1:"Brede basis in infrastructuur en systeembeheer, met groei naar netwerk en security",
         contact_title:"Contact",
         contact_sub:"Op zoek naar een specialist voor een netwerk- of securityvraagstuk? Neem contact op. Ik reageer meestal dezelfde werkdag.",
         contact_email_label:"E-mail", contact_pref_label:"Voorkeur", contact_pref_value:"Korte kennismakingscall (15–20 min)",
@@ -586,15 +630,12 @@
         exp_b5:"<strong>Network:</strong> LAN, WAN, VoIP, Wi-Fi, VPN, data centre",
         certs_title:"Certifications",
         xp_title:"Experience",
-        xp1_role:"Network Security Engineer | Ministry of Defence (NL)", xp1_meta:"Oct 2025 – present",
-        xp1_desc:"Network and security engineering in a high-security data centre environment.",
-        xp2_meta:"Jul 2025 – Sep 2025",
-        xp2_desc:"Continued the OT rollout after Bunge acquired Viterra: IT/OT separation and secure remote access. Contributed to standards and HLD/LLD.",
-        xp3_meta:"Apr 2023 – Jul 2025",
-        xp3_desc:"Implementation of OT security for industrial sites: OT firewall with Purdue-based segmentation, separate IT and OT firewalls, secure remote access, deployment and network setup of OT monitoring sensors and replacement of OT switches. Also international standards, HLD/LLD and incident handling.",
-        xp4_meta:"Jan 2022 – Apr 2023", xp4_desc:"Network and security work, implementations and improvements.",
-        xp5_meta:"Feb 2017 – Dec 2021", xp5_desc:"Network and security engineering, projects and troubleshooting.",
-        xp6_meta:"Oct 2006 – Feb 2017", xp6_desc:"Broad foundation in infrastructure and systems, growing into network and security.",
+        xp1_role:"Network Security Engineer | Ministry of Defence (NL)", xp1_meta:"Oct 2025 – present", xp1_b1:"Network and security engineering",
+        xp2_meta:"Jul 2025 – Sep 2025", xp2_ot:"OT security", xp2_ot1:"Setting up and configuring the OT firewall, segmented according to the Purdue model, including secure remote access via jump servers", xp2_ot2:"Separating IT and OT with dedicated firewall clusters and a transit network", xp2_ot3:"Deploying OT monitoring sensors, including the initial network configuration", xp2_ot4:"Replacing all OT switches in the production environment", xp2_nw:"Network & security", xp2_nw1:"Developing and maintaining network and security standards and documentation for EMEA, APAC and South America", xp2_nw2:"Creating and designing HLD/LLD", xp2_nw3:"Troubleshooting, deploying and resolving LAN, WAN, VoIP, Wi-Fi, VPN, security and data centre issues", xp2_nw4:"Network automation using scripts (Python)", xp2_nw5:"Implementing processes, policies, best practices and tools for stable, predictable and high-performance networks", xp2_nw6:"Working with the information security team to improve network security and act on security incidents", xp2_nw7:"Ensuring compliance with company policies and procedures",
+        xp3_meta:"Apr 2023 – Jul 2025", xp3_ot:"OT security", xp3_ot1:"Setting up and configuring the OT firewall, segmented according to the Purdue model, including secure remote access via jump servers", xp3_ot2:"Separating IT and OT with dedicated firewall clusters and a transit network", xp3_ot3:"Deploying OT monitoring sensors, including the initial network configuration", xp3_ot4:"Replacing all OT switches in the production environment", xp3_nw:"Network & security", xp3_nw1:"Developing and maintaining network and security standards and documentation for EMEA, APAC and South America", xp3_nw2:"Creating and designing HLD/LLD", xp3_nw3:"Troubleshooting, deploying and resolving LAN, WAN, VoIP, Wi-Fi, VPN, security and data centre issues", xp3_nw4:"Network automation using scripts (Python)", xp3_nw5:"Implementing processes, policies, best practices and tools for stable, predictable and high-performance networks", xp3_nw6:"Working with the information security team to improve network security and act on security incidents", xp3_nw7:"Ensuring compliance with company policies and procedures",
+        xp4_meta:"Jan 2022 – Apr 2023", xp4_b1:"Network and security work, implementations and improvements",
+        xp5_meta:"Feb 2017 – Dec 2021", xp5_b1:"Network and security engineering, projects and troubleshooting",
+        xp6_meta:"Oct 2006 – Feb 2017", xp6_b1:"Broad foundation in infrastructure and systems, growing into network and security",
         contact_title:"Contact",
         contact_sub:"Looking for a specialist for a network or security challenge? Get in touch. I usually respond the same business day.",
         contact_email_label:"Email", contact_pref_label:"Preference", contact_pref_value:"Short intro call (15–20 min)",
