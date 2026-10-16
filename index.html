@@ -169,7 +169,7 @@
     .lang-toggle:hover { border-color: rgba(48,178,255,.55); }
 
     /* Hero */
-    .hero { padding: 58px 0 28px; display: grid; grid-template-columns: 1.35fr .95fr; gap: 28px; align-items: stretch; }
+    .hero { padding: 58px 0 28px; display: grid; grid-template-columns: 1.35fr .95fr; gap: 28px; align-items: start; }
     .hero h1 { margin: 0 0 14px; line-height: 1.15; letter-spacing: -.02em; font-size: clamp(2rem, 2.5vw + 1.2rem, 3.2rem); }
 
     .gradient {
@@ -224,7 +224,11 @@
     .card p { margin: 0 0 10px; color: var(--muted); font-size: .9rem; }
     .list { margin: 0; padding-left: 18px; color: #d7e4ff; font-size: .88rem; display: grid; gap: 6px; }
 
-    .two-col { display: grid; grid-template-columns: 1.2fr 1fr; gap: 16px; }
+    .two-col { display: grid; grid-template-columns: 1.2fr 1fr; gap: 16px; align-items: start; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; }
+    .hero h1 .sub { display: block; font-size: .62em; color: var(--muted); font-weight: 600; margin-top: 8px; letter-spacing: -.01em; }
+    .mini-list li::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--accent-2); margin-right: 9px; vertical-align: middle; }
+    .timeline-wide .desc { max-width: 80ch; }
 
     .timeline { margin: 0; padding: 0; list-style: none; border-left: 1px solid rgba(48,178,255,.4); }
     .timeline li { position: relative; margin: 0 0 14px; padding-left: 16px; }
@@ -274,6 +278,7 @@
       .hero { grid-template-columns: 1fr; }
       .grid-3 { grid-template-columns: repeat(2, minmax(0,1fr)); }
       .two-col { grid-template-columns: 1fr; }
+      .grid-2 { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 640px) {
@@ -288,7 +293,7 @@
 </head>
 
 <body>
-  <a class="skip-link" href="#main-content">Ga naar inhoud</a>
+  <a class="skip-link" href="#main-content" data-i18n="skip">Ga naar inhoud</a>
 
   <header class="header">
     <div class="container header-inner">
@@ -303,7 +308,6 @@
       <nav aria-label="Hoofdnavigatie">
         <a href="#diensten"  data-i18n="nav_services"   data-section="diensten">Diensten</a>
         <a href="#expertise" data-i18n="nav_expertise"  data-section="expertise">Expertise</a>
-        <a href="#certs"     data-i18n="nav_certs"      data-section="certs">Certificeringen</a>
         <a href="#ervaring"  data-i18n="nav_experience" data-section="ervaring">Ervaring</a>
         <a href="#contact"   data-i18n="nav_contact"    data-section="contact">Contact</a>
       </nav>
@@ -324,35 +328,27 @@
     <section class="hero" id="top">
       <div>
         <h1>
-          <span data-i18n="hero_title_1">Inhuur van een</span>
-          <span class="gradient" data-i18n="hero_title_2">Senior Network & Security Engineer</span><br />
-          <span data-i18n="hero_title_3">(Fortinet · Cisco · F5) met focus op IT/OT-security</span>
+          <span class="gradient" data-i18n="hero_title">Senior Network & Security Engineer</span>
+          <span class="sub" data-i18n="hero_sub">Freelance · met focus op IT/OT-security</span>
         </h1>
 
-        <p class="lead" data-i18n="hero_lead">
-          Senior engineer (ZZP) voor het implementeren en verbeteren van netwerk- en securityomgevingen, in zowel IT als OT.
-          Ik werk multi-vendor: Fortinet, Cisco (Nexus/Catalyst) en F5 (LTM/Proxy/Load Balancing).
-          In OT-omgevingen: scheiding van IT en OT, segmentatie volgens het Purdue-model en secure remote access.
-        </p>
+        <p class="lead" data-i18n="hero_lead">Ik implementeer en verbeter netwerk- en securityomgevingen voor enterprise, overheid en industrie, in zowel IT als OT. Inzetbaar voor projecten, interim versterking en complexe troubleshooting.</p>
 
         <div class="tags">
-          <span class="tag primary" data-i18n="tag_fortinet">Fortinet: FortiGate / FortiSwitch / FortiAP / FortiManager / FortiAnalyzer / EMS</span>
-          <span class="tag" data-i18n="tag_cisco">Cisco: Nexus / Catalyst</span>
-          <span class="tag" data-i18n="tag_f5">F5: LTM / Proxy / Load Balancing</span>
-          <span class="tag" data-i18n="tag_scope">LAN/WAN/Wi‑Fi/VoIP · VPN</span>
-          <span class="tag" data-i18n="tag_hldlld">HLD/LLD</span>
-          <span class="tag primary" data-i18n="tag_otseg">IT/OT-segmentatie · Purdue</span>
-          <span class="tag" data-i18n="tag_itot">Secure remote access</span>
+          <span class="tag primary">Fortinet</span>
+          <span class="tag">Cisco</span>
+          <span class="tag">F5</span>
+          <span class="tag primary" data-i18n="tag_otseg">IT/OT-segmentatie</span>
+          <span class="tag" data-i18n="tag_sra">Secure remote access</span>
         </div>
 
         <div class="cta-row">
           <a class="btn btn-primary" id="ctaMain" href="mailto:richard@cyberkenbosch.nl?subject=Kennismaking" data-i18n="cta_meet">Plan een kennismaking</a>
-          <a class="btn btn-ghost" href="https://www.linkedin.com/in/richard-berkenbosch/" target="_blank" rel="noopener noreferrer" data-i18n="cta_linkedin">LinkedIn</a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/richard-berkenbosch/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
 
         <div class="meta">
-          <div><strong data-i18n="meta_available_label">Inzetbaar:</strong> <span data-i18n="meta_available_value">Projectbasis, interim, remote en op locatie</span></div>
-          <div><strong data-i18n="meta_region_label">Werkgebied:</strong> <span data-i18n="meta_region_value">Nederland · enterprise / overheid / internationale omgevingen</span></div>
+          <div data-i18n="meta_line">Projecten en interim · remote en op locatie · Nederland</div>
         </div>
       </div>
 
@@ -361,15 +357,12 @@
           <span class="dot-warning" aria-hidden="true"></span>
           <span data-i18n="profile_title">Profiel in het kort</span>
         </h2>
-        <p data-i18n="profile_body">
-          Technisch sterke en pragmatische engineer die rust brengt in complexe omgevingen. Ik combineer inhoudelijke
-          diepgang met duidelijke communicatie richting engineers, operations en stakeholders.
-        </p>
+        <p data-i18n="profile_body">Hands-on engineer met 20 jaar ervaring in infrastructuur, waarvan de laatste jaren gericht op netwerkbeveiliging.</p>
         <ul class="mini-list">
-          <li data-i18n="profile_b1">✅ Design & implementatie (HLD/LLD) en verbetertrajecten</li>
-          <li data-i18n="profile_b2">✅ OT-security: IT/OT-scheiding en Purdue-segmentatie</li>
-          <li data-i18n="profile_b3">✅ Enterprise troubleshooting (LAN/WAN/VPN/Wi‑Fi/DC)</li>
-          <li data-i18n="profile_b4">✅ Standaarden, documentatie en incidentondersteuning</li>
+          <li data-i18n="profile_b1">Fortinet-specialist (NSE 7)</li>
+          <li data-i18n="profile_b2">IT/OT-scheiding en Purdue-segmentatie</li>
+          <li data-i18n="profile_b3">Offensieve achtergrond (OSCP)</li>
+          <li data-i18n="profile_b4">Enterprise, overheid en industrie</li>
         </ul>
       </aside>
     </section>
@@ -377,61 +370,41 @@
     <!-- DIENSTEN -->
     <section class="block" id="diensten">
       <h2 class="section-title animate-in" data-i18n="services_title">Diensten</h2>
-      <p class="section-sub animate-in" data-i18n="services_sub">Flexibele inzet als specialist, van korte opdrachten tot langere trajecten.</p>
-      <div class="grid-3">
+      <div class="grid-2">
         <article class="card animate-in">
-          <h3 data-i18n="svc1_title">Design & implementatie (HLD/LLD)</h3>
-          <p data-i18n="svc1_body">Nieuwe implementaties of verbeteringen, van ontwerp tot oplevering.</p>
+          <h3 data-i18n="svc1_title">Design & implementatie</h3>
+          <p data-i18n="svc1_body">Nieuwe implementaties en verbeteringen, van HLD/LLD tot oplevering.</p>
           <ul class="list">
-            <li data-i18n="svc1_b1">Fortinet / Cisco / F5 implementaties</li>
-            <li data-i18n="svc1_b2">Segmentatie, zones, routing & policy‑ontwerp</li>
-            <li data-i18n="svc1_b3">High availability en best‑practice inrichting</li>
+            <li data-i18n="svc1_b1">Fortinet-, Cisco- en F5-implementaties</li>
+            <li data-i18n="svc1_b2">Segmentatie, routing en firewallpolicies</li>
+            <li data-i18n="svc1_b3">High availability en best practices</li>
           </ul>
         </article>
         <article class="card animate-in">
-          <h3 data-i18n="svc6_title">OT-netwerkbeveiliging</h3>
-          <p data-i18n="svc6_body">Industriële (OT) netwerken veilig scheiden van IT en gecontroleerd ontsluiten.</p>
+          <h3 data-i18n="svc2_title">OT-netwerkbeveiliging</h3>
+          <p data-i18n="svc2_body">Industriële (OT) netwerken veilig scheiden van IT en gecontroleerd ontsluiten.</p>
           <ul class="list">
-            <li data-i18n="svc6_b1">Segmentatie volgens het Purdue-model, inclusief IT/OT-DMZ</li>
-            <li data-i18n="svc6_b2">Gescheiden IT- en OT-firewalls</li>
-            <li data-i18n="svc6_b3">Secure remote access via jumpservers</li>
+            <li data-i18n="svc2_b1">Segmentatie volgens het Purdue-model, inclusief IT/OT-DMZ</li>
+            <li data-i18n="svc2_b2">Gescheiden IT- en OT-firewalls</li>
+            <li data-i18n="svc2_b3">Secure remote access via jumpservers</li>
           </ul>
         </article>
         <article class="card animate-in">
-          <h3 data-i18n="svc2_title">Beheer & changes</h3>
-          <p data-i18n="svc2_body">Tijdelijke of structurele ondersteuning in de dagelijkse operatie en change‑uitvoering.</p>
+          <h3 data-i18n="svc3_title">Beheer & changes</h3>
+          <p data-i18n="svc3_body">Ondersteuning in de dagelijkse operatie, tijdelijk of structureel.</p>
           <ul class="list">
-            <li data-i18n="svc2_b1">Firewall & load balancer changes</li>
-            <li data-i18n="svc2_b2">Upgrades, lifecycle en configuratie‑opschoning</li>
-            <li data-i18n="svc2_b3">Standaarden, documentatie en governance</li>
+            <li data-i18n="svc3_b1">Firewall- en load balancer changes</li>
+            <li data-i18n="svc3_b2">Upgrades en lifecycle, inclusief FortiManager en FortiAnalyzer</li>
+            <li data-i18n="svc3_b3">Standaarden en documentatie</li>
           </ul>
         </article>
         <article class="card animate-in">
-          <h3 data-i18n="svc3_title">Troubleshooting & incidenten</h3>
-          <p data-i18n="svc3_body">Snel naar oorzaak en herstel bij complexe netwerk/securityproblemen.</p>
+          <h3 data-i18n="svc4_title">Troubleshooting & security reviews</h3>
+          <p data-i18n="svc4_body">Snel naar de oorzaak bij complexe netwerk- en securityproblemen.</p>
           <ul class="list">
-            <li data-i18n="svc3_b1">LAN/WAN/VoIP/Wi‑Fi/VPN/DC issues</li>
-            <li data-i18n="svc3_b2">Root‑cause analyse + mitigaties</li>
-            <li data-i18n="svc3_b3">Structurele verbetermaatregelen</li>
-          </ul>
-        </article>
-        <article class="card animate-in">
-          <h3 data-i18n="svc4_title">Security hardening & reviews</h3>
-          <p data-i18n="svc4_body">Risico's verlagen met gerichte hardening, reviews en compliance checks.</p>
-          <ul class="list">
-            <li data-i18n="svc4_b1">Fortinet best‑practice reviews</li>
-            <li data-i18n="svc4_b2">Least privilege en segmentatie aanscherpen</li>
-            <li data-i18n="svc4_b3">Rapportage en verbeterplan</li>
-            <li data-i18n="svc4_b4">Netwerkmaatregelen voor NIS2 / Cyberbeveiligingswet</li>
-          </ul>
-        </article>
-        <article class="card animate-in">
-          <h3 data-i18n="svc5_title">Fortinet toolchain</h3>
-          <p data-i18n="svc5_body">Inrichting en benutting van de Fortinet stack in beheerbare standaarden.</p>
-          <ul class="list">
-            <li data-i18n="svc5_b1">FortiManager beheer en standaardisatie</li>
-            <li data-i18n="svc5_b2">FortiAnalyzer logging/reporting</li>
-            <li data-i18n="svc5_b3">FortiClient/EMS waar relevant</li>
+            <li data-i18n="svc4_b1">Root-cause analyse en structurele oplossingen</li>
+            <li data-i18n="svc4_b2">Security reviews en hardening</li>
+            <li data-i18n="svc4_b3">Netwerkmaatregelen voor NIS2 / Cyberbeveiligingswet</li>
           </ul>
         </article>
       </div>
@@ -440,79 +413,63 @@
     <!-- EXPERTISE + CERTS -->
     <section class="block two-col" id="expertise">
       <article class="card animate-in">
-        <h2 class="section-title" style="font-size:1.2rem;margin-bottom:8px;" data-i18n="exp_scope_title">Expertise (scope)</h2>
-        <p class="section-sub" style="margin-bottom:10px;" data-i18n="exp_scope_sub">Inzetbaar op netwerk-, security- en platformniveau, in IT en OT.</p>
+        <h2 class="section-title" style="font-size:1.2rem;margin-bottom:12px;" data-i18n="exp_title">Expertise</h2>
         <ul class="list">
-          <li data-i18n="exp_b1"><strong>Fortinet:</strong> FortiGate, FortiSwitch, FortiAP, FortiManager, FortiAnalyzer, FortiClient/EMS</li>
-          <li data-i18n="exp_b2"><strong>Cisco:</strong> Nexus / Catalyst</li>
-          <li data-i18n="exp_b3"><strong>F5:</strong> LTM / Proxy / Load Balancing</li>
-          <li data-i18n="exp_b4"><strong>Connectivity:</strong> LAN, WAN, VoIP, Wi‑Fi, VPN, datacenter</li>
-          <li data-i18n="exp_b5"><strong>Security:</strong> segmentatie, hardening, incidenten, samenwerking met infosec</li>
-          <li data-i18n="exp_b7"><strong>OT:</strong> IT/OT-scheiding, Purdue-segmentatie, secure remote access, OT-monitoringsensoren</li>
-          <li data-i18n="exp_b6"><strong>Engineering:</strong> HLD/LLD, standaarden, documentatie, best practices & processen</li>
+          <li><strong>Fortinet:</strong> FortiGate, FortiSwitch, FortiAP, FortiManager, FortiAnalyzer, FortiClient EMS</li>
+          <li><strong>Cisco:</strong> Nexus, Catalyst</li>
+          <li><strong>F5:</strong> LTM, proxy, load balancing</li>
+          <li data-i18n="exp_b4"><strong>OT:</strong> IT/OT-scheiding, Purdue-segmentatie, secure remote access</li>
+          <li data-i18n="exp_b5"><strong>Netwerk:</strong> LAN, WAN, VoIP, Wi-Fi, VPN, datacenter</li>
         </ul>
       </article>
 
       <article class="card animate-in" id="certs">
-        <h2 class="section-title" style="font-size:1.2rem;margin-bottom:8px;" data-i18n="certs_title">Certificeringen</h2>
-        <p class="section-sub" style="margin-bottom:10px;" data-i18n="certs_sub">Netwerk- én securitycertificeringen, inclusief offensive security achtergrond.</p>
+        <h2 class="section-title" style="font-size:1.2rem;margin-bottom:12px;" data-i18n="certs_title">Certificeringen</h2>
         <ul class="list">
-          <li data-i18n="cert_b1">Fortinet NSE 7 – Secure Networking</li>
-          <li data-i18n="cert_b2">Fortinet NSE 6 – Secure Networking</li>
-          <li data-i18n="cert_b3">Fortinet NSE 6 – SASE</li>
-          <li data-i18n="cert_b4">CCNA – Cisco Certified Network Associate</li>
-          <li data-i18n="cert_b5">OSCP</li>
-          <li data-i18n="cert_b6">eJPT, eCPPT</li>
+          <li>Fortinet NSE 7 – Secure Networking</li>
+          <li>Fortinet NSE 6 – Secure Networking</li>
+          <li>Fortinet NSE 6 – SASE</li>
+          <li>CCNA</li>
+          <li>OSCP</li>
+          <li>eJPT, eCPPT</li>
         </ul>
       </article>
     </section>
 
-    <!-- ERVARING + WAAROM -->
-    <section class="block two-col" id="ervaring">
+    <!-- ERVARING -->
+    <section class="block" id="ervaring">
       <article class="card animate-in">
-        <h2 class="section-title" style="font-size:1.2rem;margin-bottom:8px;" data-i18n="why_title">Waarom opdrachtgevers mij inhuren</h2>
-        <p class="section-sub" style="margin-bottom:10px;" data-i18n="why_sub">Ik lever niet alleen techniek, maar ook rust, overzicht en voortgang.</p>
-        <ul class="list">
-          <li data-i18n="why_b1">Hands-on specialist met focus op resultaat en continuïteit</li>
-          <li data-i18n="why_b2">Duidelijke communicatie naar technische én niet-technische stakeholders</li>
-          <li data-i18n="why_b3">Beheerbare oplossingen: documentatie, overdracht en standaarden</li>
-          <li data-i18n="why_b4">Snel productief in enterprise-omgevingen en IT/OT projecten</li>
-          <li data-i18n="why_b5">Pragmatisch: veilig waar het moet, werkbaar waar het kan</li>
-        </ul>
-      </article>
-
-      <article class="card animate-in">
-        <h2 class="section-title" style="font-size:1.2rem;margin-bottom:10px;" data-i18n="xp_title">Ervaring</h2>
-        <ul class="timeline">
+        <h2 class="section-title" style="font-size:1.2rem;margin-bottom:14px;" data-i18n="xp_title">Ervaring</h2>
+        <ul class="timeline timeline-wide">
           <li>
             <div class="role" data-i18n="xp1_role">Network Security Engineer | Ministerie van Defensie</div>
             <div class="meta" data-i18n="xp1_meta">okt 2025 – heden</div>
-            <p class="desc" data-i18n="xp1_desc">Netwerk- en security engineering in complexe omgevingen met focus op stabiliteit, security en beheerbaarheid.</p>
+            <p class="desc" data-i18n="xp1_desc">Netwerk- en security engineering in een high-security datacenteromgeving.</p>
           </li>
           <li>
-            <div class="role" data-i18n="xp2_role">Network Security Engineer | Bunge</div>
+            <div class="role">Network Security Engineer | Bunge</div>
             <div class="meta" data-i18n="xp2_meta">jul 2025 – sep 2025</div>
-            <p class="desc" data-i18n="xp2_desc">OT-security voor industriële locaties (IT/OT-scheiding, Purdue-segmentatie, secure remote access), standaarden/documentatie (EMEA/APAC/S‑AM), HLD/LLD en troubleshooting.</p>
+            <p class="desc" data-i18n="xp2_desc">OT-security voor industriële locaties (IT/OT-scheiding, Purdue-segmentatie, secure remote access), standaarden en HLD/LLD voor EMEA, APAC en Zuid-Amerika.</p>
           </li>
           <li>
-            <div class="role" data-i18n="xp3_role">Network Security Engineer | Viterra</div>
+            <div class="role">Network Security Engineer | Viterra</div>
             <div class="meta" data-i18n="xp3_meta">apr 2023 – jul 2025</div>
             <p class="desc" data-i18n="xp3_desc">Implementatie van OT-security voor industriële locaties: OT-firewall met Purdue-segmentatie, gescheiden IT- en OT-firewalls, secure remote access, OT-monitoringsensoren en vervanging van OT-switches. Daarnaast internationale standaarden, HLD/LLD en incidentafhandeling.</p>
           </li>
           <li>
-            <div class="role" data-i18n="xp4_role">Network & Security Engineer | Alpina Group</div>
+            <div class="role">Network & Security Engineer | Alpina Group</div>
             <div class="meta" data-i18n="xp4_meta">jan 2022 – apr 2023</div>
-            <p class="desc" data-i18n="xp4_desc">Netwerk- en security werkzaamheden, implementaties en verbeteringen in enterprise context.</p>
+            <p class="desc" data-i18n="xp4_desc">Netwerk- en securitywerkzaamheden, implementaties en verbeteringen.</p>
           </li>
           <li>
-            <div class="role" data-i18n="xp5_role">Network & Security Engineer | Voogd & Voogd</div>
+            <div class="role">Network & Security Engineer | Voogd & Voogd</div>
             <div class="meta" data-i18n="xp5_meta">feb 2017 – dec 2021</div>
-            <p class="desc" data-i18n="xp5_desc">Netwerk/security engineering, projecten en troubleshooting.</p>
+            <p class="desc" data-i18n="xp5_desc">Netwerk- en security engineering, projecten en troubleshooting.</p>
           </li>
           <li>
-            <div class="role" data-i18n="xp6_role">System Engineer | Voogd & Voogd</div>
+            <div class="role">System Engineer | Voogd & Voogd</div>
             <div class="meta" data-i18n="xp6_meta">okt 2006 – feb 2017</div>
-            <p class="desc" data-i18n="xp6_desc">Brede infra/system engineering basis met groei naar netwerk- en securityspecialisatie.</p>
+            <p class="desc" data-i18n="xp6_desc">Brede basis in infrastructuur en systeembeheer, met groei naar netwerk en security.</p>
           </li>
         </ul>
       </article>
@@ -521,35 +478,27 @@
     <!-- CONTACT -->
     <section class="block" id="contact">
       <div class="contact-wrap animate-in">
-        <h2 class="section-title" style="margin-bottom:6px;" data-i18n="contact_title">Contact & beschikbaarheid</h2>
-        <p class="section-sub" data-i18n="contact_sub">
-          Op zoek naar tijdelijke capaciteit of een specialist voor een concreet netwerk/securityvraagstuk?
-          Neem contact op. Ik reageer meestal dezelfde werkdag.
-        </p>
+        <h2 class="section-title" style="margin-bottom:6px;" data-i18n="contact_title">Contact</h2>
+        <p class="section-sub" data-i18n="contact_sub">Op zoek naar een specialist voor een netwerk- of securityvraagstuk? Neem contact op. Ik reageer meestal dezelfde werkdag.</p>
         <div class="contact-grid">
           <div class="contact-item">
             <span class="contact-label" data-i18n="contact_email_label">E-mail</span>
             <span class="contact-value"><a href="mailto:richard@cyberkenbosch.nl">richard@cyberkenbosch.nl</a></span>
           </div>
           <div class="contact-item">
-            <span class="contact-label" data-i18n="contact_linkedin_label">LinkedIn</span>
-            <span class="contact-value">
-              <a href="https://www.linkedin.com/in/richard-berkenbosch/" target="_blank" rel="noopener noreferrer">linkedin.com/in/richard-berkenbosch</a>
-            </span>
+            <span class="contact-label">LinkedIn</span>
+            <span class="contact-value"><a href="https://www.linkedin.com/in/richard-berkenbosch/" target="_blank" rel="noopener noreferrer">linkedin.com/in/richard-berkenbosch</a></span>
           </div>
           <div class="contact-item">
             <span class="contact-label" data-i18n="contact_pref_label">Voorkeur</span>
-            <span class="contact-value" data-i18n="contact_pref_value">Korte intakecall (15–20 min) voor scope en inzet</span>
+            <span class="contact-value" data-i18n="contact_pref_value">Korte kennismakingscall (15–20 min)</span>
           </div>
         </div>
-        <p class="small-muted" style="margin:12px 0 0;" data-i18n="contact_note">
-          Beschikbaar op basis van uurtarief · Remote en/of op locatie · Nederland
-        </p>
       </div>
     </section>
 
     <footer>
-      <div>© <span id="year"></span> <span data-i18n="footer_name">Cyberkenbosch B.V.</span> · <span data-i18n="footer_role">Richard Berkenbosch, Senior Network & Security Engineer</span></div>
+      <div>© <span id="year"></span> Cyberkenbosch B.V. · Richard Berkenbosch</div>
       <div data-i18n="footer_kvk">KvK: 42092623</div>
     </footer>
   </main>
@@ -557,142 +506,98 @@
   <script>
     const i18n = {
       nl: {
+        skip:"Ga naar inhoud",
         brand_name:"Richard Berkenbosch", brand_role:" · Senior Network & Security Engineer",
-        nav_services:"Diensten", nav_expertise:"Expertise", nav_certs:"Certificeringen", nav_experience:"Ervaring", nav_contact:"Contact",
+        nav_services:"Diensten", nav_expertise:"Expertise", nav_experience:"Ervaring", nav_contact:"Contact",
         available:"Beschikbaar voor inhuur",
-        hero_title_1:"Inhuur van een", hero_title_2:"Senior Network & Security Engineer", hero_title_3:"(Fortinet · Cisco · F5) met focus op IT/OT-security",
-        hero_lead:"Senior engineer (ZZP) voor het implementeren en verbeteren van netwerk- en securityomgevingen, in zowel IT als OT. Ik werk multi-vendor: Fortinet, Cisco (Nexus/Catalyst) en F5 (LTM/Proxy/Load Balancing). In OT-omgevingen: scheiding van IT en OT, segmentatie volgens het Purdue-model en secure remote access.",
-        tag_fortinet:"Fortinet: FortiGate / FortiSwitch / FortiAP / FortiManager / FortiAnalyzer / EMS", tag_cisco:"Cisco: Nexus / Catalyst", tag_f5:"F5: LTM / Proxy / Load Balancing",
-        tag_scope:"LAN/WAN/Wi‑Fi/VoIP · VPN", tag_hldlld:"HLD/LLD", tag_otseg:"IT/OT-segmentatie · Purdue", tag_itot:"Secure remote access",
-        cta_meet:"Plan een kennismaking", cta_linkedin:"LinkedIn",
-        meta_available_label:"Inzetbaar:", meta_available_value:"Projectbasis, interim, remote en op locatie",
-        meta_region_label:"Werkgebied:", meta_region_value:"Nederland · enterprise / overheid / internationale omgevingen",
+        hero_title:"Senior Network & Security Engineer", hero_sub:"Freelance · met focus op IT/OT-security",
+        hero_lead:"Ik implementeer en verbeter netwerk- en securityomgevingen voor enterprise, overheid en industrie, in zowel IT als OT. Inzetbaar voor projecten, interim versterking en complexe troubleshooting.",
+        tag_otseg:"IT/OT-segmentatie", tag_sra:"Secure remote access",
+        cta_meet:"Plan een kennismaking",
+        meta_line:"Projecten en interim · remote en op locatie · Nederland",
         profile_title:"Profiel in het kort",
-        profile_body:"Technisch sterke en pragmatische engineer die rust brengt in complexe omgevingen. Ik combineer inhoudelijke diepgang met duidelijke communicatie richting engineers, operations en stakeholders.",
-        profile_b1:"✅ Design & implementatie (HLD/LLD) en verbetertrajecten", profile_b2:"✅ OT-security: IT/OT-scheiding en Purdue-segmentatie",
-        profile_b3:"✅ Enterprise troubleshooting (LAN/WAN/VPN/Wi‑Fi/DC)", profile_b4:"✅ Standaarden, documentatie en incidentondersteuning",
-        services_title:"Diensten", services_sub:"Flexibele inzet als specialist, van korte opdrachten tot langere trajecten.",
-        svc1_title:"Design & implementatie (HLD/LLD)", svc1_body:"Nieuwe implementaties of verbeteringen, van ontwerp tot oplevering.",
-        svc1_b1:"Fortinet / Cisco / F5 implementaties", svc1_b2:"Segmentatie, zones, routing & policy‑ontwerp", svc1_b3:"High availability en best‑practice inrichting",
-        svc2_title:"Beheer & changes", svc2_body:"Tijdelijke of structurele ondersteuning in de dagelijkse operatie en change‑uitvoering.",
-        svc2_b1:"Firewall & load balancer changes", svc2_b2:"Upgrades, lifecycle en configuratie‑opschoning", svc2_b3:"Standaarden, documentatie en governance",
-        svc3_title:"Troubleshooting & incidenten", svc3_body:"Snel naar oorzaak en herstel bij complexe netwerk/securityproblemen.",
-        svc3_b1:"LAN/WAN/VoIP/Wi‑Fi/VPN/DC issues", svc3_b2:"Root‑cause analyse + mitigaties", svc3_b3:"Structurele verbetermaatregelen",
-        svc4_title:"Security hardening & reviews", svc4_body:"Risico's verlagen met gerichte hardening, reviews en compliance checks.",
-        svc4_b1:"Fortinet best‑practice reviews", svc4_b2:"Least privilege en segmentatie aanscherpen", svc4_b3:"Rapportage en verbeterplan", svc4_b4:"Netwerkmaatregelen voor NIS2 / Cyberbeveiligingswet",
-        svc5_title:"Fortinet toolchain", svc5_body:"Inrichting en benutting van de Fortinet stack in beheerbare standaarden.",
-        svc5_b1:"FortiManager beheer en standaardisatie", svc5_b2:"FortiAnalyzer logging/reporting", svc5_b3:"FortiClient/EMS waar relevant",
-        svc6_title:"OT-netwerkbeveiliging", svc6_body:"Industriële (OT) netwerken veilig scheiden van IT en gecontroleerd ontsluiten.",
-        svc6_b1:"Segmentatie volgens het Purdue-model, inclusief IT/OT-DMZ", svc6_b2:"Gescheiden IT- en OT-firewalls", svc6_b3:"Secure remote access via jumpservers",
-        exp_scope_title:"Expertise (scope)", exp_scope_sub:"Inzetbaar op netwerk-, security- en platformniveau, in IT en OT.",
-        exp_b1:"<strong>Fortinet:</strong> FortiGate, FortiSwitch, FortiAP, FortiManager, FortiAnalyzer, FortiClient/EMS",
-        exp_b2:"<strong>Cisco:</strong> Nexus / Catalyst", exp_b3:"<strong>F5:</strong> LTM / Proxy / Load Balancing",
-        exp_b4:"<strong>Connectivity:</strong> LAN, WAN, VoIP, Wi‑Fi, VPN, datacenter",
-        exp_b5:"<strong>Security:</strong> segmentatie, hardening, incidenten, samenwerking met infosec",
-        exp_b6:"<strong>Engineering:</strong> HLD/LLD, standaarden, documentatie, best practices & processen",
-        exp_b7:"<strong>OT:</strong> IT/OT-scheiding, Purdue-segmentatie, secure remote access, OT-monitoringsensoren",
-        certs_title:"Certificeringen", certs_sub:"Netwerk- én securitycertificeringen, inclusief offensive security achtergrond.",
-        cert_b1:"Fortinet NSE 7 – Secure Networking", cert_b2:"Fortinet NSE 6 – Secure Networking",
-        cert_b3:"Fortinet NSE 6 – SASE", cert_b4:"CCNA – Cisco Certified Network Associate", cert_b5:"OSCP", cert_b6:"eJPT, eCPPT",
-        why_title:"Waarom opdrachtgevers mij inhuren", why_sub:"Ik lever niet alleen techniek, maar ook rust, overzicht en voortgang.",
-        why_b1:"Hands-on specialist met focus op resultaat en continuïteit", why_b2:"Duidelijke communicatie naar technische én niet-technische stakeholders",
-        why_b3:"Beheerbare oplossingen: documentatie, overdracht en standaarden", why_b4:"Snel productief in enterprise-omgevingen en IT/OT projecten",
-        why_b5:"Pragmatisch: veilig waar het moet, werkbaar waar het kan",
+        profile_body:"Hands-on engineer met 20 jaar ervaring in infrastructuur, waarvan de laatste jaren gericht op netwerkbeveiliging.",
+        profile_b1:"Fortinet-specialist (NSE 7)", profile_b2:"IT/OT-scheiding en Purdue-segmentatie",
+        profile_b3:"Offensieve achtergrond (OSCP)", profile_b4:"Enterprise, overheid en industrie",
+        services_title:"Diensten",
+        svc1_title:"Design & implementatie", svc1_body:"Nieuwe implementaties en verbeteringen, van HLD/LLD tot oplevering.",
+        svc1_b1:"Fortinet-, Cisco- en F5-implementaties", svc1_b2:"Segmentatie, routing en firewallpolicies", svc1_b3:"High availability en best practices",
+        svc2_title:"OT-netwerkbeveiliging", svc2_body:"Industriële (OT) netwerken veilig scheiden van IT en gecontroleerd ontsluiten.",
+        svc2_b1:"Segmentatie volgens het Purdue-model, inclusief IT/OT-DMZ", svc2_b2:"Gescheiden IT- en OT-firewalls", svc2_b3:"Secure remote access via jumpservers",
+        svc3_title:"Beheer & changes", svc3_body:"Ondersteuning in de dagelijkse operatie, tijdelijk of structureel.",
+        svc3_b1:"Firewall- en load balancer changes", svc3_b2:"Upgrades en lifecycle, inclusief FortiManager en FortiAnalyzer", svc3_b3:"Standaarden en documentatie",
+        svc4_title:"Troubleshooting & security reviews", svc4_body:"Snel naar de oorzaak bij complexe netwerk- en securityproblemen.",
+        svc4_b1:"Root-cause analyse en structurele oplossingen", svc4_b2:"Security reviews en hardening", svc4_b3:"Netwerkmaatregelen voor NIS2 / Cyberbeveiligingswet",
+        exp_title:"Expertise",
+        exp_b4:"<strong>OT:</strong> IT/OT-scheiding, Purdue-segmentatie, secure remote access",
+        exp_b5:"<strong>Netwerk:</strong> LAN, WAN, VoIP, Wi-Fi, VPN, datacenter",
+        certs_title:"Certificeringen",
         xp_title:"Ervaring",
         xp1_role:"Network Security Engineer | Ministerie van Defensie", xp1_meta:"okt 2025 – heden",
-        xp1_desc:"Netwerk- en security engineering in complexe omgevingen met focus op stabiliteit, security en beheerbaarheid.",
-        xp2_role:"Network Security Engineer | Bunge", xp2_meta:"jul 2025 – sep 2025",
-        xp2_desc:"OT-security voor industriële locaties (IT/OT-scheiding, Purdue-segmentatie, secure remote access), standaarden/documentatie (EMEA/APAC/S‑AM), HLD/LLD en troubleshooting.",
-        xp3_role:"Network Security Engineer | Viterra", xp3_meta:"apr 2023 – jul 2025",
+        xp1_desc:"Netwerk- en security engineering in een high-security datacenteromgeving.",
+        xp2_meta:"jul 2025 – sep 2025",
+        xp2_desc:"OT-security voor industriële locaties (IT/OT-scheiding, Purdue-segmentatie, secure remote access), standaarden en HLD/LLD voor EMEA, APAC en Zuid-Amerika.",
+        xp3_meta:"apr 2023 – jul 2025",
         xp3_desc:"Implementatie van OT-security voor industriële locaties: OT-firewall met Purdue-segmentatie, gescheiden IT- en OT-firewalls, secure remote access, OT-monitoringsensoren en vervanging van OT-switches. Daarnaast internationale standaarden, HLD/LLD en incidentafhandeling.",
-        xp4_role:"Network & Security Engineer | Alpina Group", xp4_meta:"jan 2022 – apr 2023",
-        xp4_desc:"Netwerk- en security werkzaamheden, implementaties en verbeteringen in enterprise context.",
-        xp5_role:"Network & Security Engineer | Voogd & Voogd", xp5_meta:"feb 2017 – dec 2021",
-        xp5_desc:"Netwerk/security engineering, projecten en troubleshooting.",
-        xp6_role:"System Engineer | Voogd & Voogd", xp6_meta:"okt 2006 – feb 2017",
-        xp6_desc:"Brede infra/system engineering basis met groei naar netwerk- en securityspecialisatie.",
-        contact_title:"Contact & beschikbaarheid",
-        contact_sub:"Op zoek naar tijdelijke capaciteit of een specialist voor een concreet netwerk/securityvraagstuk? Neem contact op. Ik reageer meestal dezelfde werkdag.",
-        contact_email_label:"E-mail", contact_linkedin_label:"LinkedIn",
-        contact_pref_label:"Voorkeur", contact_pref_value:"Korte intakecall (15–20 min) voor scope en inzet",
-        contact_note:"Beschikbaar op basis van uurtarief · Remote en/of op locatie · Nederland",
-        footer_name:"Cyberkenbosch B.V.", footer_role:"Richard Berkenbosch, Senior Network & Security Engineer",
+        xp4_meta:"jan 2022 – apr 2023", xp4_desc:"Netwerk- en securitywerkzaamheden, implementaties en verbeteringen.",
+        xp5_meta:"feb 2017 – dec 2021", xp5_desc:"Netwerk- en security engineering, projecten en troubleshooting.",
+        xp6_meta:"okt 2006 – feb 2017", xp6_desc:"Brede basis in infrastructuur en systeembeheer, met groei naar netwerk en security.",
+        contact_title:"Contact",
+        contact_sub:"Op zoek naar een specialist voor een netwerk- of securityvraagstuk? Neem contact op. Ik reageer meestal dezelfde werkdag.",
+        contact_email_label:"E-mail", contact_pref_label:"Voorkeur", contact_pref_value:"Korte kennismakingscall (15–20 min)",
         footer_kvk:"KvK: 42092623",
         page_title:"Richard Berkenbosch | Senior Freelance Network & Security Engineer · IT/OT Security",
-        meta_description:"Senior freelance Network & Security Engineer beschikbaar voor inhuur. Fortinet, Cisco en F5. Ervaring met IT/OT-security: scheiding van IT en OT, segmentatie volgens het Purdue-model en secure remote access. Implementatie, beheer en troubleshooting.",
-        mailto_subject:"Kennismaking",
-        lang_toggle_label:"Schakel naar Engels"
+        meta_description:"Senior freelance Network & Security Engineer beschikbaar voor inhuur. Fortinet, Cisco en F5. Ervaring met IT/OT-security: scheiding van IT en OT, segmentatie volgens het Purdue-model en secure remote access.",
+        mailto_subject:"Kennismaking", lang_toggle_label:"Schakel naar Engels"
       },
       en: {
+        skip:"Skip to content",
         brand_name:"Richard Berkenbosch", brand_role:" · Senior Network & Security Engineer",
-        nav_services:"Services", nav_expertise:"Expertise", nav_certs:"Certifications", nav_experience:"Experience", nav_contact:"Contact",
+        nav_services:"Services", nav_expertise:"Expertise", nav_experience:"Experience", nav_contact:"Contact",
         available:"Available for contract",
-        hero_title_1:"Contract a", hero_title_2:"Senior Network & Security Engineer", hero_title_3:"(Fortinet · Cisco · F5) with a focus on IT/OT security",
-        hero_lead:"Senior freelance engineer for implementing and improving network and security environments, in both IT and OT. I work multi‑vendor: Fortinet, Cisco (Nexus/Catalyst) and F5 (LTM/Proxy/Load Balancing). In OT environments: separating IT and OT, segmentation according to the Purdue model and secure remote access.",
-        tag_fortinet:"Fortinet: FortiGate / FortiSwitch / FortiAP / FortiManager / FortiAnalyzer / EMS", tag_cisco:"Cisco: Nexus / Catalyst", tag_f5:"F5: LTM / Proxy / Load Balancing",
-        tag_scope:"LAN/WAN/Wi‑Fi/VoIP · VPN", tag_hldlld:"HLD/LLD", tag_otseg:"IT/OT segmentation · Purdue", tag_itot:"Secure remote access",
-        cta_meet:"Get in touch", cta_linkedin:"LinkedIn",
-        meta_available_label:"Availability:", meta_available_value:"Projects, interim, remote and on‑site",
-        meta_region_label:"Region:", meta_region_value:"Netherlands · enterprise / government / international environments",
+        hero_title:"Senior Network & Security Engineer", hero_sub:"Freelance · focused on IT/OT security",
+        hero_lead:"I implement and improve network and security environments for enterprise, government and industry, in both IT and OT. Available for projects, interim capacity and complex troubleshooting.",
+        tag_otseg:"IT/OT segmentation", tag_sra:"Secure remote access",
+        cta_meet:"Get in touch",
+        meta_line:"Projects and interim · remote and on-site · Netherlands",
         profile_title:"Profile at a glance",
-        profile_body:"Strong, pragmatic engineer who brings clarity to complex environments. I combine technical depth with clear communication for engineers, operations and stakeholders.",
-        profile_b1:"✅ Design & implementation (HLD/LLD) and improvement projects", profile_b2:"✅ OT security: IT/OT separation and Purdue segmentation",
-        profile_b3:"✅ Enterprise troubleshooting (LAN/WAN/VPN/Wi‑Fi/DC)", profile_b4:"✅ Standards, documentation and incident support",
-        services_title:"Services", services_sub:"Flexible engagement, from short assignments to longer trajectories.",
-        svc1_title:"Design & implementation (HLD/LLD)", svc1_body:"New implementations or improvements, from design to delivery.",
-        svc1_b1:"Fortinet / Cisco / F5 implementations", svc1_b2:"Segmentation, zones, routing & policy design", svc1_b3:"High availability and best‑practice setup",
-        svc2_title:"Operations & changes", svc2_body:"Temporary or structural support for day‑to‑day operations and change delivery.",
-        svc2_b1:"Firewall & load balancer changes", svc2_b2:"Upgrades, lifecycle and configuration cleanup", svc2_b3:"Standards, documentation and governance",
-        svc3_title:"Troubleshooting & incidents", svc3_body:"Fast root‑cause and recovery for complex network/security issues.",
-        svc3_b1:"LAN/WAN/VoIP/Wi‑Fi/VPN/DC issues", svc3_b2:"Root‑cause analysis + mitigations", svc3_b3:"Structural improvement measures",
-        svc4_title:"Security hardening & reviews", svc4_body:"Reduce risk through targeted hardening, reviews and compliance checks.",
-        svc4_b1:"Fortinet best‑practice reviews", svc4_b2:"Least privilege and stronger segmentation", svc4_b3:"Reporting and improvement plan", svc4_b4:"Network measures for NIS2 compliance",
-        svc5_title:"Fortinet toolchain", svc5_body:"Implement and leverage the Fortinet stack with maintainable standards.",
-        svc5_b1:"FortiManager operations and standardisation", svc5_b2:"FortiAnalyzer logging/reporting", svc5_b3:"FortiClient/EMS where relevant",
-        svc6_title:"OT network security", svc6_body:"Securely separating industrial (OT) networks from IT and providing controlled access.",
-        svc6_b1:"Segmentation according to the Purdue model, including an IT/OT DMZ", svc6_b2:"Separate IT and OT firewalls", svc6_b3:"Secure remote access via jump servers",
-        exp_scope_title:"Expertise (scope)", exp_scope_sub:"Hands‑on across networking, security and platforms, in both IT and OT.",
-        exp_b1:"<strong>Fortinet:</strong> FortiGate, FortiSwitch, FortiAP, FortiManager, FortiAnalyzer, FortiClient/EMS",
-        exp_b2:"<strong>Cisco:</strong> Nexus / Catalyst", exp_b3:"<strong>F5:</strong> LTM / Proxy / Load Balancing",
-        exp_b4:"<strong>Connectivity:</strong> LAN, WAN, VoIP, Wi‑Fi, VPN, datacenter",
-        exp_b5:"<strong>Security:</strong> segmentation, hardening, incidents, collaboration with infosec",
-        exp_b6:"<strong>Engineering:</strong> HLD/LLD, standards, documentation, best practices & processes",
-        exp_b7:"<strong>OT:</strong> IT/OT separation, Purdue segmentation, secure remote access, OT monitoring sensors",
-        certs_title:"Certifications", certs_sub:"Networking and security certifications, including an offensive security background.",
-        cert_b1:"Fortinet NSE 7 – Secure Networking", cert_b2:"Fortinet NSE 6 – Secure Networking",
-        cert_b3:"Fortinet NSE 6 – SASE", cert_b4:"CCNA – Cisco Certified Network Associate", cert_b5:"OSCP", cert_b6:"eJPT, eCPPT",
-        why_title:"Why clients hire me", why_sub:"I deliver not only engineering, but also clarity, pace and ownership.",
-        why_b1:"Hands‑on specialist focused on outcomes and continuity", why_b2:"Clear communication for both technical and non‑technical stakeholders",
-        why_b3:"Maintainable solutions: documentation, handover and standards", why_b4:"Productive quickly in enterprise environments and IT/OT projects",
-        why_b5:"Pragmatic: secure where it must be, workable where it can be",
+        profile_body:"Hands-on engineer with 20 years of experience in infrastructure, focused on network security in recent years.",
+        profile_b1:"Fortinet specialist (NSE 7)", profile_b2:"IT/OT separation and Purdue segmentation",
+        profile_b3:"Offensive security background (OSCP)", profile_b4:"Enterprise, government and industry",
+        services_title:"Services",
+        svc1_title:"Design & implementation", svc1_body:"New implementations and improvements, from HLD/LLD to delivery.",
+        svc1_b1:"Fortinet, Cisco and F5 implementations", svc1_b2:"Segmentation, routing and firewall policies", svc1_b3:"High availability and best practices",
+        svc2_title:"OT network security", svc2_body:"Securely separating industrial (OT) networks from IT and providing controlled access.",
+        svc2_b1:"Segmentation according to the Purdue model, including an IT/OT DMZ", svc2_b2:"Separate IT and OT firewalls", svc2_b3:"Secure remote access via jump servers",
+        svc3_title:"Operations & changes", svc3_body:"Support for day-to-day operations, temporary or structural.",
+        svc3_b1:"Firewall and load balancer changes", svc3_b2:"Upgrades and lifecycle, including FortiManager and FortiAnalyzer", svc3_b3:"Standards and documentation",
+        svc4_title:"Troubleshooting & security reviews", svc4_body:"Fast root cause for complex network and security issues.",
+        svc4_b1:"Root-cause analysis and structural fixes", svc4_b2:"Security reviews and hardening", svc4_b3:"Network measures for NIS2 compliance",
+        exp_title:"Expertise",
+        exp_b4:"<strong>OT:</strong> IT/OT separation, Purdue segmentation, secure remote access",
+        exp_b5:"<strong>Network:</strong> LAN, WAN, VoIP, Wi-Fi, VPN, datacenter",
+        certs_title:"Certifications",
         xp_title:"Experience",
         xp1_role:"Network Security Engineer | Ministry of Defence (NL)", xp1_meta:"Oct 2025 – present",
-        xp1_desc:"Network and security engineering in complex environments with a focus on stability, security and maintainability.",
-        xp2_role:"Network Security Engineer | Bunge", xp2_meta:"Jul 2025 – Sep 2025",
-        xp2_desc:"OT security for industrial sites (IT/OT separation, Purdue segmentation, secure remote access), standards/documentation (EMEA/APAC/S‑AM), HLD/LLD and troubleshooting.",
-        xp3_role:"Network Security Engineer | Viterra", xp3_meta:"Apr 2023 – Jul 2025",
+        xp1_desc:"Network and security engineering in a high-security datacenter environment.",
+        xp2_meta:"Jul 2025 – Sep 2025",
+        xp2_desc:"OT security for industrial sites (IT/OT separation, Purdue segmentation, secure remote access), standards and HLD/LLD for EMEA, APAC and South America.",
+        xp3_meta:"Apr 2023 – Jul 2025",
         xp3_desc:"Implementation of OT security for industrial sites: OT firewall with Purdue-based segmentation, separate IT and OT firewalls, secure remote access, OT monitoring sensors and replacement of OT switches. Also international standards, HLD/LLD and incident handling.",
-        xp4_role:"Network & Security Engineer | Alpina Group", xp4_meta:"Jan 2022 – Apr 2023",
-        xp4_desc:"Network and security engineering, implementations and improvements in an enterprise context.",
-        xp5_role:"Network & Security Engineer | Voogd & Voogd", xp5_meta:"Feb 2017 – Dec 2021",
-        xp5_desc:"Network/security engineering, projects and troubleshooting.",
-        xp6_role:"System Engineer | Voogd & Voogd", xp6_meta:"Oct 2006 – Feb 2017",
-        xp6_desc:"Broad infra/system engineering foundation, growing into a network & security focus.",
-        contact_title:"Contact & availability",
-        contact_sub:"Looking for interim capacity or a specialist for a concrete network/security challenge? Get in touch. I usually respond the same business day.",
-        contact_email_label:"Email", contact_linkedin_label:"LinkedIn",
-        contact_pref_label:"Preference", contact_pref_value:"Short intake call (15–20 min) to align on scope",
-        contact_note:"Available on hourly rate · Remote and/or on‑site · Netherlands",
-        footer_name:"Cyberkenbosch B.V.", footer_role:"Richard Berkenbosch, Senior Network & Security Engineer",
+        xp4_meta:"Jan 2022 – Apr 2023", xp4_desc:"Network and security work, implementations and improvements.",
+        xp5_meta:"Feb 2017 – Dec 2021", xp5_desc:"Network and security engineering, projects and troubleshooting.",
+        xp6_meta:"Oct 2006 – Feb 2017", xp6_desc:"Broad foundation in infrastructure and systems, growing into network and security.",
+        contact_title:"Contact",
+        contact_sub:"Looking for a specialist for a network or security challenge? Get in touch. I usually respond the same business day.",
+        contact_email_label:"Email", contact_pref_label:"Preference", contact_pref_value:"Short intro call (15–20 min)",
         footer_kvk:"Chamber of Commerce (KvK): 42092623",
         page_title:"Richard Berkenbosch | Senior Freelance Network & Security Engineer · IT/OT Security",
-        meta_description:"Senior freelance Network & Security Engineer available for contract. Fortinet, Cisco and F5. Experience in IT/OT security: separating IT and OT, segmentation according to the Purdue model and secure remote access. Implementation, operations and troubleshooting.",
-        mailto_subject:"Introduction",
-        lang_toggle_label:"Switch to Dutch"
+        meta_description:"Senior freelance Network & Security Engineer available for contract. Fortinet, Cisco and F5. Experience in IT/OT security: separating IT and OT, segmentation according to the Purdue model and secure remote access.",
+        mailto_subject:"Introduction", lang_toggle_label:"Switch to Dutch"
       }
     };
 
-    const HTML_KEYS = new Set(["exp_b1","exp_b2","exp_b3","exp_b4","exp_b5","exp_b6","exp_b7"]);
+    const HTML_KEYS = new Set(["exp_b4","exp_b5"]);
 
     // Veilige opslag: sommige browsers (privémodus) blokkeren localStorage
     const store = {
@@ -713,15 +618,13 @@
       });
 
       document.title = dict.page_title;
-      const q = s => document.querySelector(s);
-      const setContent = (sel, val) => { const el = q(sel); if (el) el.setAttribute("content", val); };
+      const setContent = (sel, val) => { const el = document.querySelector(sel); if (el) el.setAttribute("content", val); };
       setContent('meta[name="description"]', dict.meta_description);
       setContent('meta[property="og:title"]', dict.page_title);
       setContent('meta[property="og:description"]', dict.meta_description);
       setContent('meta[name="twitter:title"]', dict.page_title);
       setContent('meta[name="twitter:description"]', dict.meta_description);
 
-      // Mailto-onderwerp per taal
       const cta = document.getElementById("ctaMain");
       if (cta) cta.href = `mailto:richard@cyberkenbosch.nl?subject=${encodeURIComponent(dict.mailto_subject)}`;
 
@@ -730,7 +633,6 @@
       btn.setAttribute("aria-label", dict.lang_toggle_label);
     }
 
-    // Scroll-spy
     function initScrollSpy() {
       if (!("IntersectionObserver" in window)) return;
       const navLinks = document.querySelectorAll("nav a[data-section]");
@@ -747,11 +649,9 @@
       sections.forEach(s => io.observe(s));
     }
 
-    // Entrance animations
     function initAnimations() {
       const hero = document.querySelector(".hero");
       if (hero) requestAnimationFrame(() => hero.classList.add("visible"));
-
       const items = document.querySelectorAll(".animate-in");
       if (!("IntersectionObserver" in window)) { items.forEach(el => el.classList.add("visible")); return; }
       const io = new IntersectionObserver(entries => {
@@ -762,7 +662,6 @@
       items.forEach(el => io.observe(el));
     }
 
-    // Init
     document.getElementById("year").textContent = new Date().getFullYear();
     document.getElementById("langToggle").addEventListener("click", () => {
       setLang((store.get("site_lang") || document.documentElement.lang || "nl") === "nl" ? "en" : "nl");
